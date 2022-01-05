@@ -5,12 +5,15 @@ const express = require('express');
 //Create an Express server
 const app = express();
 
-//On this first version, accept anything coming from clients
-app.get('*', (req, res) => {
-  res.send('Express response');
+//Use the dotenv module to store specific configuration
+require('dotenv').config()
+
+//Restrict routes to only the homepage
+app.get('/', (req, res) => {
+  res.send(process.env.PROJECT);
 });
 
 //Start listening on a specific port
-app.listen(4000);
+app.listen(process.env.PORT);
 
-console.log('App server running on port 4000');
+console.log('App server running on port ' + process.env.PORT);
