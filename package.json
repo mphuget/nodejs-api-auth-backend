@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-api-auth-backend",
+  "version": "1.0.0",
+  "description": "Node.js backend for REST API with authentication",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mphuget/nodejs-api-auth-backend.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "API",
+    "Authentication",
+    "Backend",
+    "JWT"
+  ],
+  "author": "Marc-Philippe HUGET",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mphuget/nodejs-api-auth-backend/issues"
+  },
+  "homepage": "https://github.com/mphuget/nodejs-api-auth-backend#readme"
+}
