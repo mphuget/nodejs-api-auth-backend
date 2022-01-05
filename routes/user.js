@@ -1,10 +1,11 @@
 let router = require('express').Router();
+let controller = require("../controllers/user");
 
 //The signin route to log into the site
 //unauthenticated route
 router.post('/signin', (req, res) => {
 
-  res.send("signin");
+  controller.signin(req, res);
 
 });
 
@@ -12,7 +13,7 @@ router.post('/signin', (req, res) => {
 //unauthenticated route
 router.post('/signout', (req, res) => {
 
-    res.send("signout");
+  controller.signout(req, res);
 
 });
 
@@ -20,7 +21,7 @@ router.post('/signout', (req, res) => {
 //unauthenticated route
 router.post('/signup', (req, res) => {
 
-	res.send("signup");
+	controller.signup(req, res);
 
 });
 
@@ -28,7 +29,7 @@ router.post('/signup', (req, res) => {
 //authenticated route
 router.get('/profile', (req, res) => {
 
-	res.send("profile");
+	controller.profile(req, res);
 
 });
 
