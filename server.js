@@ -13,6 +13,12 @@ app.get('/', (req, res) => {
   res.send(process.env.PROJECT);
 });
 
+//Access the routes
+const userRoutes = require('./routes/user');
+
+//Use the routes
+app.use(userRoutes);
+
 //Start listening on a specific port
 app.listen(process.env.PORT);
 
