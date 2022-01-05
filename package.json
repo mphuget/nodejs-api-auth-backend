@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mphuget/nodejs-api-auth-backend/issues"
   },
-  "homepage": "https://github.com/mphuget/nodejs-api-auth-backend#readme"
+  "homepage": "https://github.com/mphuget/nodejs-api-auth-backend#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
