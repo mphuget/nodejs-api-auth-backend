@@ -49,3 +49,17 @@ If everything went smoothly, you should see a running on port message and connec
 
 The different routes were tested under Postman
 
+## How to reuse 
+
+From this code, it is possible to add an API
+
+1. Create a file in the routes folder where you will provide all the routes for your API
+
+2. Create a file in the controller folder where the corresponding behaviour will be added
+
+3. (If needed) Add a file in the models folder for the model
+
+4. Modify the server.js file to add the routes
+
+Et voilà
+
