@@ -29,6 +29,11 @@ let MongoStore = require('connect-mongo');
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
+//Used for Jsonwebtoken (in login)
+const passport = require('passport');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
 //compress response body for better performance
 app.use(compression());
 
@@ -78,6 +83,25 @@ app.use(session({
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL})
 
 }));
+
+var opts = {}
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = process.env.SECRET_KEY_JWT;
+
+passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    User.findById(jwt_payload.id)
+    .then((user) => {
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+      }
+    }, (err) => {
+      return done(err, false);
+    });
+}));
+
+app.use(passport.initialize());
 
 //Access the routes
 const userRoutes = require('./routes/user');
