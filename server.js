@@ -36,6 +36,9 @@ const http404 = require('./middleware/route404');
 //Used for logging
 const morgan = require("morgan");
 
+//Add more logging with Winston
+const {loggers, transports, format} = require("winston");
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -65,6 +68,27 @@ app.use(cors());
 
 //Use the morgan logging 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+
+//Define the loggers for Winston
+loggers.add('infoLogger', {
+  level: 'info',
+  transports: [new transports.File({ filename: path.join(__dirname, 'logs/info.log')})],
+  format: format.printf((info) => {
+    let message = `${new Date(Date.now()).toUTCString()} | ${info.level.toUpperCase()}  | ${info.message}`
+    return message
+  })
+});
+
+loggers.add('errorLogger', {
+  level: 'error',
+  transports: [new transports.File({ filename: path.join(__dirname, 'logs/error.log')})],
+  format: format.printf((info) => {
+    let message = `${new Date(Date.now()).toUTCString()} | ${info.level.toUpperCase()}  | ${info.message}`
+    return message
+  })
+});
+
+const infoLogger = loggers.get('infoLogger');
 
 //Restrict routes to only the homepage
 app.get('/', (req, res) => {
