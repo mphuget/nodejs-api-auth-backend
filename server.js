@@ -33,6 +33,9 @@ const chalk = require('chalk');
 //hits a wrong route
 const http404 = require('./middleware/route404');
 
+//Used for logging
+const morgan = require("morgan");
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -59,6 +62,9 @@ app.use(bodyParser.json());
 //CORS in use
 //imposed by server when both client and server are on the same domain
 app.use(cors());
+
+//Use the morgan logging 
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
 //Restrict routes to only the homepage
 app.get('/', (req, res) => {
