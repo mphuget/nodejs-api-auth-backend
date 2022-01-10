@@ -9,6 +9,8 @@ function signin(req, res) {
 
 		if (user.comparePassword(req.body.password)) {
 
+            req.session.username = req.body.name;
+			req.session.logged = true;
 			res.redirect('/profile');
 		}
 		else
