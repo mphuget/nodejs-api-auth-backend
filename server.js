@@ -17,6 +17,9 @@ const path = require('path');
 //CORS module allows to protect server from different attacks
 const cors = require('cors');
 
+//Add helmet to protect the server
+const helmet = require('helmet');
+
 //to access the database stored in MongoDB
 const mongoose = require('mongoose');
 
@@ -65,6 +68,9 @@ app.use(bodyParser.json());
 //CORS in use
 //imposed by server when both client and server are on the same domain
 app.use(cors());
+
+//Protect the server
+app.use(helmet());
 
 //Use the morgan logging 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
