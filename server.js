@@ -5,8 +5,39 @@ const express = require('express');
 //Create an Express server
 const app = express();
 
+//To access form data
+let bodyParser = require('body-parser');
+
+//Used to reduce response body
+let compression = require('compression');
+
+//To access server directories
+let path = require('path');
+
+//CORS module allows to protect server from different attacks
+let cors = require('cors');
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
+
+//compress response body for better performance
+app.use(compression());
+
+//disable headers indicating pages are coming from an Express server
+app.disable('x-powered-by');
+
+//used to fetch the data from forms on HTTP POST
+app.use(bodyParser.urlencoded({
+
+  extended : true
+
+}));
+
+app.use(bodyParser.json());
+
+//CORS in use
+//imposed by server when both client and server are on the same domain
+app.use(cors());
 
 //Restrict routes to only the homepage
 app.get('/', (req, res) => {
