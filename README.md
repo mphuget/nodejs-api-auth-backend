@@ -16,6 +16,7 @@ requests from clients and authenticate the users whether to only give access to 
 - Sign up with a name and a password
 - Sign in with a name and a password
 - Sign out
+- Protected routes (Profile) through JWT
 
 ## How to run
 

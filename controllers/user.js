@@ -1,3 +1,9 @@
+const jwt = require('jsonwebtoken');
+
+function createToken(user) {
+    return jwt.sign({id: user.id, username: user.username}, process.env.SECRET_KEY_JWT);
+}
+
 function signin(req, res) {
 
     let User = require('../models/user');
@@ -11,7 +17,7 @@ function signin(req, res) {
 
             req.session.username = req.body.name;
 			req.session.logged = true;
-			res.redirect('/profile');
+            res.status(200).json({token: createToken(user)});
 		}
 		else
 			res.redirect('/');
@@ -56,7 +62,7 @@ function profile(req, res) {
         res.send("Profile");
     else
         res.redirect('/');
-        
+
     
 }
 

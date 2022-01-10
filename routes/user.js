@@ -1,5 +1,6 @@
 let router = require('express').Router();
 let controller = require("../controllers/user");
+const passport = require("passport");
 
 //The signin route to log into the site
 //unauthenticated route
@@ -27,7 +28,7 @@ router.post('/signup', (req, res) => {
 
 //The profile route 
 //authenticated route
-router.get('/profile', (req, res) => {
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
 
 	controller.profile(req, res);
 
