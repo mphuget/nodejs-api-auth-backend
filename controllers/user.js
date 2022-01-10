@@ -1,6 +1,19 @@
 function signin(req, res) {
 
-    res.send("Signin");
+    let User = require('../models/user');
+
+    //search for the User
+	User.findOne({username: req.body.name}, function(err, user) {
+		if (err)
+			throw err;
+
+		if (user.comparePassword(req.body.password)) {
+
+			res.redirect('/profile');
+		}
+		else
+			res.redirect('/');
+	});
 
 }
 
