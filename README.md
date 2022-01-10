@@ -24,4 +24,19 @@ Install the dependencies (removed from Git repository):
 
 npm install
 
+Create a directory for MongoDB data (select where to store them)
+
+mkdir ./data
+
+Run the MongoDB server from another directory than the data one (in a first terminal)
+
+mongod --dbpath ./data
+
+On another terminal, run the server
+
+node server.js
+
+If everything went smoothly, you should see a running on port message and connected to database messages
+
+
 

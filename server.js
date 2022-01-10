@@ -17,6 +17,9 @@ let path = require('path');
 //CORS module allows to protect server from different attacks
 let cors = require('cors');
 
+//to access the database stored in MongoDB
+let mongoose = require('mongoose');
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -42,6 +45,22 @@ app.use(cors());
 //Restrict routes to only the homepage
 app.get('/', (req, res) => {
   res.send(process.env.PROJECT);
+});
+
+//connects to the MongoDB database
+mongoose.connect(process.env.MONGODB_URL, (err)=> {
+
+  if (err) {
+
+    throw err;
+
+  }
+  else {
+
+    console.log("Connected to the database");
+
+  }
+
 });
 
 //Access the routes
