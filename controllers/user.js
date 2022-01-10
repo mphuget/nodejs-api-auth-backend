@@ -52,7 +52,11 @@ function signout(req, res) {
 
 function profile(req, res) {
 
-    res.send("Profile");
+    if (req.session.logged)
+        res.send("Profile");
+    else
+        res.redirect('/');
+        
     
 }
 
