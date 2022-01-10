@@ -10,6 +10,12 @@ MongoDB 5.0.2
 One of the first step when developing a Node.js project, especially a REST API server, is to be able to accept
 requests from clients and authenticate the users whether to only give access to whom granted or to record the use.
 
+## Features
+
+- Data stored in MongoDB
+- Sign up with a name and a password
+- Sign in with a name and a password
+
 ## How to run
 
 Clone the repository:
