@@ -9,6 +9,7 @@ MongoDB 5.0.2
 
 One of the first step when developing a Node.js project, especially a REST API server, is to be able to accept
 requests from clients and authenticate the users whether to only give access to whom granted or to record the use.
+Apart from usual actions (sign up/in/out), it is possible to protect routes (see profile routes) with passport
 
 ## Features
 
@@ -20,31 +21,31 @@ requests from clients and authenticate the users whether to only give access to 
 
 ## How to run
 
-Clone the repository:
+1. Clone the repository:
 
 git clone https://github.com/mphuget/nodejs-api-auth-backend.git
 
-Go to the repository:
+2. Go to the repository:
 
 cd nodejs-api-auth-backend
 
-Install the dependencies (removed from Git repository):
+3. Install the dependencies (removed from Git repository):
 
 npm install
 
-Create a directory for MongoDB data (select where to store them)
+4. Create a directory for MongoDB data (select where to store them)
 
 mkdir ./data
 
-Run the MongoDB server from another directory than the data one (in a first terminal)
+5. Run the MongoDB server from another directory than the data one (in a first terminal)
 
 mongod --dbpath ./data
 
-On another terminal, run the server
+6. On another terminal, run the server
 
 node server.js
 
 If everything went smoothly, you should see a running on port message and connected to database messages
 
-
+The different routes were tested under Postman
 
