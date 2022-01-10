@@ -6,25 +6,25 @@ const express = require('express');
 const app = express();
 
 //To access form data
-let bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 //Used to reduce response body
-let compression = require('compression');
+const compression = require('compression');
 
 //To access server directories
-let path = require('path');
+const path = require('path');
 
 //CORS module allows to protect server from different attacks
-let cors = require('cors');
+const cors = require('cors');
 
 //to access the database stored in MongoDB
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //session allows to store data such as user data
-let session = require('express-session');
+const session = require('express-session');
 
 //sessions are stored into MongoDB
-let MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 
 //Use the dotenv module to store specific configuration
 require('dotenv').config()

@@ -1,5 +1,5 @@
-let router = require('express').Router();
-let controller = require("../controllers/user");
+const router = require('express').Router();
+const controller = require("../controllers/user");
 const passport = require("passport");
 
 //The signin route to log into the site
