@@ -20,6 +20,12 @@ let cors = require('cors');
 //to access the database stored in MongoDB
 let mongoose = require('mongoose');
 
+//session allows to store data such as user data
+let session = require('express-session');
+
+//sessions are stored into MongoDB
+let MongoStore = require('connect-mongo');
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -62,6 +68,16 @@ mongoose.connect(process.env.MONGODB_URL, (err)=> {
   }
 
 });
+
+//setting session
+app.use(session({
+
+  resave: true,
+  saveUninitialized: true,
+  secret: process.env.SECRET_KEY,
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL})
+
+}));
 
 //Access the routes
 const userRoutes = require('./routes/user');
