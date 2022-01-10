@@ -6,7 +6,24 @@ function signin(req, res) {
 
 function signup(req, res) {
 
-    res.send("Signup");
+    //create a new User
+    let User = require('../models/user');
+	let user = new User();
+
+    //add the date
+	user.username = req.body.name;
+	user.password = req.body.password;
+
+    //save it in MongoDB
+	user.save((err, savedUser) => {
+
+		if (err)
+			throw err;
+
+        //return to the homepage
+		res.redirect('/');
+
+	});
 
 }
 
