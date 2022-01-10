@@ -44,6 +44,8 @@ function signup(req, res) {
 
 function signout(req, res) {
 
+    req.session.username = "";
+	req.session.logged = false;
     res.redirect("/");
 
 }
