@@ -26,6 +26,9 @@ const session = require('express-session');
 //sessions are stored into MongoDB
 const MongoStore = require('connect-mongo');
 
+//Add colour highlighting on console
+const chalk = require('chalk');
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -68,7 +71,7 @@ mongoose.connect(process.env.MONGODB_URL, (err)=> {
   }
   else {
 
-    console.log("Connected to the database");
+    console.log(chalk.green("Connected to the database"));
 
   }
 
@@ -114,4 +117,4 @@ app.use(userRoutes);
 //Start listening on a specific port
 app.listen(process.env.PORT);
 
-console.log('App server running on port ' + process.env.PORT);
+console.log(chalk.green('App server running on port ' + process.env.PORT));
