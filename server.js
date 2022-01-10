@@ -29,6 +29,10 @@ const MongoStore = require('connect-mongo');
 //Add colour highlighting on console
 const chalk = require('chalk');
 
+//The 404 middleware used when an incoming request
+//hits a wrong route
+const http404 = require('./middleware/route404');
+
 //Use the dotenv module to store specific configuration
 require('dotenv').config()
 
@@ -113,6 +117,10 @@ const userRoutes = require('./routes/user');
 
 //Use the routes
 app.use(userRoutes);
+
+//When there is no route that caught the incoming request
+//use the 404 middleware
+app.use(http404.notFound);
 
 //Start listening on a specific port
 app.listen(process.env.PORT);
