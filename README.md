@@ -41,7 +41,12 @@ mkdir ./data
 
 mongod --dbpath ./data
 
-6. On another terminal, run the server
+6. Rename the .env-example file into .env
+
+7. Change the content of the .env file. The critical data are port on which the server is
+running, and the MongoDB URL
+
+8. On another terminal, run the server
 
 node server.js
 
@@ -61,5 +66,5 @@ From this code, it is possible to add an API
 
 4. Modify the server.js file to add the routes
 
-Et voilà
+Et voilà! Enjoy!
 
